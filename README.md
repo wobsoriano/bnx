@@ -1,17 +1,17 @@
-# bunx
+# bnx
 
-Simple [zx](https://github.com/google/zx) style shell for Bun/Node.
+[zx](https://github.com/google/zx) inspired shell for Bun/Node.
 
 ## Install
 
 ```bash
-bun add bunx # npm install bunx
+bun add bunx # npm install bnx
 ```
 
 ## Usage
 
 ```ts
-import { $ } from 'bunx'
+import { $ } from 'bnx'
 
 const list = $`ls -l`
 
