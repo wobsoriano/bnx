@@ -4,6 +4,12 @@ Simple [zx](https://github.com/google/zx) style shell for Bun/Node.
 
 ## Install
 
+```bash
+bun add bunx
+```
+
+## Usage
+
 ```ts
 import { $ } from 'bunx'
 
