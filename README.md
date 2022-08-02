@@ -5,7 +5,7 @@ Simple [zx](https://github.com/google/zx) style shell for Bun/Node.
 ## Install
 
 ```bash
-bun add bunx
+bun add bunx # npm install bunx
 ```
 
 ## Usage
