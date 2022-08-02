@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-bun add bunx # npm install bnx
+bun add bnx # npm install bnx
 ```
 
 ## Usage
