@@ -11,7 +11,6 @@ const execSync = (c: string) => {
 }
 const execSyncWrapper = (
   cmd: TemplateStringsArray | string,
-  // deno-lint-ignore no-explicit-any
   ...args: any[]
 ) => {
   if (typeof cmd === 'string') {
