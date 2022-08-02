@@ -11,7 +11,7 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "description": "",
+  "description": "Simple zx style shell for Bun/Node.",
   "scripts": {
     "build-fast": "tsup src/index.ts --format cjs,esm",
     "build": "bun run build-fast --dts-resolve",
@@ -23,7 +23,11 @@
     "dist"
   ],
   "keywords": [
-    "bun"
+    "bun",
+    "zx",
+    "shell",
+    "bash",
+    "cli"
   ],
   "license": "MIT",
   "homepage": "https://github.com/wobsoriano/bunx#readme",
