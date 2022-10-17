@@ -37,7 +37,7 @@
   "bugs": "https://github.com/wobsoriano/bnx/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "devDependencies": {
-    "bun-types": "^0.1.4",
+    "bun-types": "^0.2.0",
     "bumpp": "^8.2.1",
     "typescript": "^4.7.4",
     "tsup": "^6.1.3"
