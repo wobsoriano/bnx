@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "description": "zx inspired shell for Bun/Node.",
   "scripts": {
-    "build": "bun build src/index.ts --outdir dist && dts-bundle-generator src/index.ts -o dist/index.d.ts",
+    "build": "bun build src/index.ts --minify --outdir dist && dts-bundle-generator src/index.ts -o dist/index.d.ts",
     "release": "bumpp && npm publish",
     "prepublishOnly": "bun run build"
   },
