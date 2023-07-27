@@ -1,6 +1,6 @@
 # 🐚 bnx
 
-[zx](https://github.com/google/zx) inspired shell for Bun/Node.
+[zx](https://github.com/google/zx) inspired shell for Bun.
 
 ## Install
 
