@@ -8,8 +8,4 @@ console.log(files)
 const branch = await $`git branch --show-current`
 console.log(branch)
 
-// await Promise.all([
-//   $`echo 1`,
-//   $`echo 2`,
-//   $`echo 3`,
-// ])
+await $`cat package.json | grep name`
