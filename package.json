@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "description": "zx inspired shell for Bun/Node.",
+  "description": "A simple zx inspired shell for Bun.",
   "scripts": {
     "build": "bun build src/index.ts --minify --outdir dist && dts-bundle-generator src/index.ts -o dist/index.d.ts",
     "release": "bumpp && npm publish",
