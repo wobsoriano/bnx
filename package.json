@@ -41,8 +41,5 @@
     "bun-types": "^0.7.0",
     "tsup": "^7.1.0",
     "typescript": "^5.1.6"
-  },
-  "dependencies": {
-    "bun-utilities": "^0.2.1"
   }
 }
