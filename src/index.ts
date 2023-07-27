@@ -5,12 +5,14 @@ const quote = (cmd: TemplateStringsArray, ...args: Array<string | number>) => {
     return acc + cur + (args[i] || '')
   }, '')
 }
+
 const execSync = (c: string) => {
   const cmd = c.split(/\s+/)
   return spawnSync({
     cmd: [cmd[0], ...cmd.slice(1)]
   })
 }
+
 const execSyncWrapper = (
   cmd: TemplateStringsArray | string,
   ...args: any[]
@@ -29,8 +31,10 @@ export const $o = (
 ) => {
   return execSyncWrapper(cmd, ...args).stdout!.toString()
 }
+
 /** Run a command and return stdout decoded (alias to $o) */
 export const $ = $o
+
 /** Run a command and return stderr decoded */
 export const $e = (
   cmd: TemplateStringsArray | string,
@@ -46,6 +50,7 @@ export const $s = (
 ) => {
   return execSyncWrapper(cmd, ...args).success
 }
+
 /** Run a command and throw an error if it exists with a non-zero code. */
 export const $t = (
   cmd: TemplateStringsArray | string,
