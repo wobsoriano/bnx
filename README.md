@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-bun add bnx # npm install bnx
+bun add bnx
 ```
 
 ## Usage
@@ -13,14 +13,14 @@ bun add bnx # npm install bnx
 ```ts
 import { $ } from 'bnx'
 
-const list = $`ls -l`
+const list = await $`ls -l`
 
 const files = list.split('\n').slice(1).map((l) => l.split(/\s+/).at(-1))
 console.log(files)
 
-const branch = $`git branch --show-current`
+const branch = await $`git branch --show-current`
 
-$`mkdir /tmp/${branch}`
+await $`mkdir /tmp/${branch}`
 ```
 
 ## License

@@ -4,59 +4,27 @@ const quote = (cmd: TemplateStringsArray, ...args: Array<string | number>) => {
   }, '')
 }
 
-const execSync = (c: string) => {
-  const cmd = c.split(/\s+/)
-  return Bun.spawnSync({
-    cmd: [cmd[0], ...cmd.slice(1)]
-  })
-}
+const exec = (c: string) => {
+  const cmd = c.split(/\s+/);
+  return Bun.spawn([cmd[0], ...cmd.slice(1)]);
+};
 
-const execSyncWrapper = (
+const execWrapper = (
   cmd: TemplateStringsArray | string,
   ...args: any[]
 ) => {
-  if (typeof cmd === 'string') {
-    return execSync(cmd)
+  if (typeof cmd === "string") {
+    return exec(cmd);
   } else {
-    return execSync(quote(cmd, ...args))
+    return exec(quote(cmd, ...args));
   }
-}
+};
 
-/** Run a command and return stdout decoded */
-export const $o = (
+export const $ = async (
   cmd: TemplateStringsArray | string,
   ...args: Array<string | number>
 ) => {
-  return execSyncWrapper(cmd, ...args).stdout!.toString()
-}
-
-/** Run a command and return stdout decoded (alias to $o) */
-export const $ = $o
-
-/** Run a command and return stderr decoded */
-export const $e = (
-  cmd: TemplateStringsArray | string,
-  ...args: Array<string | number>
-) => {
-  return execSyncWrapper(cmd, ...args).stderr!.toString()
-}
-
-/** Run a command and return executed status */
-export const $s = (
-  cmd: TemplateStringsArray | string,
-  ...args: Array<string | number>
-) => {
-  return execSyncWrapper(cmd, ...args).success
-}
-
-/** Run a command and throw an error if it exists with a non-zero code. */
-export const $t = (
-  cmd: TemplateStringsArray | string,
-  ...args: Array<string | number>
-) => {
-  const result = execSyncWrapper(cmd, ...args)
-  if (!result.success) {
-    console.error(execSyncWrapper(cmd, ...args).stderr)
-    throw (`'${cmd} ${args}' exited with non-zero code.`)
-  }
+  const proc = execWrapper(cmd, ...args);
+  const text = await new Response(proc.stdout).text();
+  return text
 }
