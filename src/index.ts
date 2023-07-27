@@ -1,4 +1,4 @@
-import { spawn } from 'bun-utilities/spawn'
+import { spawnSync } from 'bun'
 
 const quote = (cmd: TemplateStringsArray, ...args: Array<string | number>) => {
   return cmd.reduce((acc, cur, i) => {
@@ -7,7 +7,9 @@ const quote = (cmd: TemplateStringsArray, ...args: Array<string | number>) => {
 }
 const execSync = (c: string) => {
   const cmd = c.split(/\s+/)
-  return spawn(cmd[0], cmd.slice(1))
+  return spawnSync({
+    cmd: [cmd[0], ...cmd.slice(1)]
+  })
 }
 const execSyncWrapper = (
   cmd: TemplateStringsArray | string,
@@ -25,7 +27,7 @@ export const $o = (
   cmd: TemplateStringsArray | string,
   ...args: Array<string | number>
 ) => {
-  return execSyncWrapper(cmd, ...args).stdout!
+  return execSyncWrapper(cmd, ...args).stdout!.toString()
 }
 /** Run a command and return stdout decoded (alias to $o) */
 export const $ = $o
@@ -36,12 +38,13 @@ export const $e = (
 ) => {
   return execSyncWrapper(cmd, ...args).stderr
 }
+
 /** Run a command and return executed status */
 export const $s = (
   cmd: TemplateStringsArray | string,
   ...args: Array<string | number>
 ) => {
-  return execSyncWrapper(cmd, ...args).isExecuted
+  return execSyncWrapper(cmd, ...args).success
 }
 /** Run a command and throw an error if it exists with a non-zero code. */
 export const $t = (
@@ -49,7 +52,7 @@ export const $t = (
   ...args: Array<string | number>
 ) => {
   const result = execSyncWrapper(cmd, ...args)
-  if (!result.isExecuted) {
+  if (!result.success) {
     console.error(execSyncWrapper(cmd, ...args).stderr)
     throw (`'${cmd} ${args}' exited with non-zero code.`)
   }
