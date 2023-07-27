@@ -1,5 +1,3 @@
-import { spawnSync } from 'bun'
-
 const quote = (cmd: TemplateStringsArray, ...args: Array<string | number>) => {
   return cmd.reduce((acc, cur, i) => {
     return acc + cur + (args[i] || '')
@@ -8,7 +6,7 @@ const quote = (cmd: TemplateStringsArray, ...args: Array<string | number>) => {
 
 const execSync = (c: string) => {
   const cmd = c.split(/\s+/)
-  return spawnSync({
+  return Bun.spawnSync({
     cmd: [cmd[0], ...cmd.slice(1)]
   })
 }

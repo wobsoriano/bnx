@@ -1,17 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "esnext",
+    "target": "ES2021",
+    "module": "ES2022",
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "allowJs": true,
-    "noEmit": true,
-    "outDir": "dist",
     "resolveJsonModule": true,
-    "types": ["bun-types", "bun-utilities"]
+    "types": ["bun-types"]
   }
 }

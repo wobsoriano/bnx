@@ -2,20 +2,11 @@
   "name": "bnx",
   "version": "0.1.2",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
   "description": "zx inspired shell for Bun/Node.",
   "scripts": {
-    "build-fast": "tsup src/index.ts --format cjs,esm",
-    "build": "bun run build-fast --dts-resolve",
-    "release": "bumpp --commit --push --tag && npm publish",
+    "build": "bun build src/index.ts --outdir dist && dts-bundle-generator src/index.ts -o dist/index.d.ts",
+    "release": "bumpp && npm publish",
     "prepublishOnly": "bun run build"
   },
   "files": [
@@ -39,7 +30,7 @@
   "devDependencies": {
     "bumpp": "^9.1.1",
     "bun-types": "^0.7.0",
-    "tsup": "^7.1.0",
+    "dts-bundle-generator": "^8.0.1",
     "typescript": "^5.1.6"
   }
 }
