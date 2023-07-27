@@ -38,7 +38,7 @@ export const $e = (
   cmd: TemplateStringsArray | string,
   ...args: Array<string | number>
 ) => {
-  return execSyncWrapper(cmd, ...args).stderr
+  return execSyncWrapper(cmd, ...args).stderr!.toString()
 }
 
 /** Run a command and return executed status */
